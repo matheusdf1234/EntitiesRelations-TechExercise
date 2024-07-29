@@ -119,7 +119,11 @@ public class PersonController : ControllerBase
 
         if (await _personService.EstablishRelationships(person1, person2))
         {
-            return Ok(new List<PersonModel>() { person1, person2} );
+            return Ok(new List<PersonResponseDTO>()
+            {
+                new PersonResponseDTO { Id = person1.Id, Name = person1.Name, MyRelations = person1.MyRelations },
+                new PersonResponseDTO { Id = person2.Id, Name = person2.Name, MyRelations = person2.MyRelations }
+             });
         }
         return Ok($"Relationship between {person1Id} and {person2Id} was already set");
     }

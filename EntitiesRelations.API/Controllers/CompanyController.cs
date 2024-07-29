@@ -57,7 +57,7 @@ namespace EntitiesRelations.API.Controllers
             {
                 return NotFound();
             }
-            var companyDTO = new CompanyResponseDTO { Id = company.Id, Name = company.Name, AvailableShares = company.AvailableShares };
+            var companyDTO = new CompanyResponseDTO { Id = company.Id, Name = company.Name, AvailableShares = company.AvailableShares, WhoOwnsMe = company.WhoOwnsMeList };
             return Ok(companyDTO);
         }
 

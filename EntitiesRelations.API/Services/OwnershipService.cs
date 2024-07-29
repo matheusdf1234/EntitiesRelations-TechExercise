@@ -18,7 +18,7 @@ namespace EntitiesRelations.API.Services
         {
 
             var companyToBeBought = await _companyService.GetByIdAsync(companyId);
-            if (companyToBeBought != null && companyToBeBought.AvailableShares >= percentage) //extract this to a "canCompanyBeBought" method
+            if (companyToBeBought != null && companyToBeBought.AvailableShares >= percentage) //TODO: extract this to a "canCompanyBeBought" method
             {
                 //in a real world scenario, this would need to call the CompanyProvider class to write this data in the DB
                 if (companyToBeBought.WhoOwnsMeList.ContainsKey(entityId))
@@ -33,7 +33,7 @@ namespace EntitiesRelations.API.Services
 
                 EstablishOwnership(companyToBeBought, companyToBeBought.WhoOwnsMeList[entityId]);
 
-                var companyDTO = new CompanyResponseDTO { AvailableShares = companyToBeBought.AvailableShares, Id = entityId, Name = companyToBeBought.Name };
+                var companyDTO = new CompanyResponseDTO { AvailableShares = companyToBeBought.AvailableShares, Id = entityId, Name = companyToBeBought.Name, WhoOwnsMe = companyToBeBought.WhoOwnsMeList };
                 return companyDTO;
             }
             return null;

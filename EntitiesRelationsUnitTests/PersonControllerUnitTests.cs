@@ -218,7 +218,7 @@ namespace EntitiesRelationsUnitTests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var returnValue = Assert.IsType<List<PersonModel>>(okResult.Value);
+            var returnValue = Assert.IsType<List<PersonResponseDTO>>(okResult.Value);
             Assert.Contains(returnValue, p => p.Id == person1Id);
             Assert.Contains(returnValue, p => p.Id == person2Id);
         }
