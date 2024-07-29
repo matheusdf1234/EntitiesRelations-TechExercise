@@ -1,0 +1,107 @@
+
+@EntitiesRelationsAPI_HostAddress = http://localhost:5127
+
+GET {{EntitiesRelationsAPI_HostAddress}}/company
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/company
+Content-Type: application/json
+
+{
+ "id": 1111,
+ "Name": "ACME"
+}
+
+
+###
+POST {{EntitiesRelationsAPI_HostAddress}}/company
+Content-Type: application/json
+
+{
+ "id": 1110,
+ "Name": "Company2"
+}
+
+###
+
+
+PUT {{EntitiesRelationsAPI_HostAddress}}/company
+Content-Type: application/json
+
+{
+ "id": 1111,
+ "Name": "ACMEeeee"
+}
+
+###
+
+DELETE {{EntitiesRelationsAPI_HostAddress}}/company?id=1111
+
+###
+
+GET {{EntitiesRelationsAPI_HostAddress}}/company/1110
+
+###
+
+GET {{EntitiesRelationsAPI_HostAddress}}/person
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person
+Content-Type: application/json
+
+{
+  "id": 1112,
+  "name": "Matheus"
+}
+
+###
+POST {{EntitiesRelationsAPI_HostAddress}}/person
+Content-Type: application/json
+
+{
+  "id": 1113,
+  "name": "Joe"
+}
+
+###
+DELETE {{EntitiesRelationsAPI_HostAddress}}/person?id=1113
+
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person
+Content-Type: application/json
+
+{
+  "id": 1114,
+  "name": "Matheus",
+  "myRelations":[]
+}
+
+###
+
+GET {{EntitiesRelationsAPI_HostAddress}}/company
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person/buyCompany?personId=1112&companyId=1110&percentage=30
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person/buyCompany?personId=1113&companyId=1111&percentage=10
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/company/buyCompany?entityId=1111&companyId=1110&percentage=35
+
+
+###
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person/CreateRelations?person1Id=1113&person2Id=1114
+
+###
+
+
+POST {{EntitiesRelationsAPI_HostAddress}}/person/DeleteRelations?person1Id=1112&person2Id=1114
